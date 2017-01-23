@@ -1,0 +1,8 @@
+E:\project\vs\VideoUpload\VideoUpload\bin\Debug\VideoUpload.exe.config
+E:\project\vs\VideoUpload\VideoUpload\bin\Debug\VideoUpload.exe
+E:\project\vs\VideoUpload\VideoUpload\bin\Debug\VideoUpload.pdb
+E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.Properties.Resources.resources
+E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.csproj.GenerateResource.Cache
+E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.exe
+E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.pdb
+E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.MainForm.resources
