@@ -35,8 +35,8 @@ namespace VideoUpload
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button2 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            this.fileList = new List<VideoFile>();
             // 
             // button1
             // 
@@ -50,9 +50,9 @@ namespace VideoUpload
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(468, 339);
+            this.progressBar1.Location = new System.Drawing.Point(428, 339);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(289, 23);
+            this.progressBar1.Size = new System.Drawing.Size(352, 25);
             this.progressBar1.TabIndex = 1;
             // 
             // button2
@@ -70,15 +70,26 @@ namespace VideoUpload
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(8, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(793, 330);
+            this.listView1.Size = new System.Drawing.Size(772, 330);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(426, 367);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 379);
+            this.ClientSize = new System.Drawing.Size(792, 381);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.progressBar1);
@@ -87,6 +98,7 @@ namespace VideoUpload
             this.Text = "视频上传";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,6 +109,8 @@ namespace VideoUpload
         private Button button2;
         private ListView listView1;
         private List<VideoFile> fileList;
+        private VideoFile currentFile;
+        private Label label1;
     }
 }
 

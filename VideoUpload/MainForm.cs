@@ -24,7 +24,7 @@ namespace VideoUpload
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();     //显示选择文件对话框
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = ".mp4 files |*.mp4|.flv files |*.flv|.bhd files |*.bhd";
+            openFileDialog1.Filter = "all files |*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.Multiselect = true;
             openFileDialog1.RestoreDirectory = true;
@@ -32,6 +32,8 @@ namespace VideoUpload
             {
                 string[] files = openFileDialog1.FileNames;
                 int count = this.fileList.Count;
+                
+                
                 for (int i = 0; i < files.Length;i++ )
                 {
                     FileInfo fileInfo = new FileInfo(files[i]);
@@ -45,7 +47,7 @@ namespace VideoUpload
 
                     this.fileList.Add(v);
                 }
-
+                this.currentFile = this.fileList.ElementAt(0);
                 addFileToList();
             }
         }
@@ -61,9 +63,7 @@ namespace VideoUpload
                 ListViewItem lvi = new ListViewItem(fileList.ElementAt(i).FileIndex + "");
                 lvi.SubItems.Add(fileList.ElementAt(i).FileSize+"KB");
                 lvi.SubItems.Add(fileList.ElementAt(i).FileName);
-                lvi.SubItems.Add("%"+fileList.ElementAt(i).UploadProgress);
                 lvi.SubItems.Add(fileList.ElementAt(i).FileStatus);
-
                 listView1.Items.Add(lvi);
             }
             listView1.EndUpdate();
@@ -72,14 +72,19 @@ namespace VideoUpload
         //开始上传按钮事件
         private void button2_Click(object sender, EventArgs e)
         {
-            this.progressBar1.Minimum = 0;
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.BackColor = Color.Red;
-
-            for (int i = 0; i < 100; i++)
+            if(this.fileList.Count != 0)
             {
-                this.progressBar1.Value++;
-                Application.DoEvents();
+                this.progressBar1.Minimum = 0;
+                this.progressBar1.Maximum = 100;
+                this.progressBar1.BackColor = Color.Red;
+
+                for (int i = 0; i < 100; i++)
+                {
+                    this.label1.Text = this.currentFile.FileName + " " + i + "%";
+                    this.progressBar1.Value++;
+
+                    Application.DoEvents();
+                }
             }
         }
 
@@ -88,9 +93,10 @@ namespace VideoUpload
             //初始化表头
             listView1.Columns.Add("编号", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("大小", 100, HorizontalAlignment.Center);
-            listView1.Columns.Add("名称", 100, HorizontalAlignment.Center);
-            listView1.Columns.Add("进度", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("名称", 200, HorizontalAlignment.Center);
             listView1.Columns.Add("状态", 100, HorizontalAlignment.Center);
+
+            this.fileList = new List<VideoFile>();
         }
     }
 }
