@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,49 +24,63 @@ namespace VideoUpload
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();     //显示选择文件对话框
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Filter = ".mp4 files |*.mp4|.flv files |*.flv|.bhd files |*.bhd";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.Multiselect = true;
             openFileDialog1.RestoreDirectory = true;
-            openFileDialog1.ShowDialog();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string[] files = openFileDialog1.FileNames;
+                int count = this.fileList.Count;
+                for (int i = 0; i < files.Length;i++ )
+                {
+                    FileInfo fileInfo = new FileInfo(files[i]);
+                    VideoFile v = new VideoFile();
+                    v.FileName = fileInfo.Name;
+                    v.FileSize = fileInfo.Length;
+                    v.FileLocal = files[i];
+                    v.FileIndex = count + i;
+                    v.FileStatus = "等待上传";
+                    v.UploadProgress = 0;
+
+                    this.fileList.Add(v);
+                }
+
+                addFileToList();
+            }
+        }
+
+        //将文件添加至ListView
+        public void addFileToList()
+        {
+            int count = this.fileList.Count;
+            listView1.Items.Clear();
+            listView1.BeginUpdate();
+            for (int i = 0; i < count; i++)
+            {
+                ListViewItem lvi = new ListViewItem(fileList.ElementAt(i).FileIndex + "");
+                lvi.SubItems.Add(fileList.ElementAt(i).FileSize+"KB");
+                lvi.SubItems.Add(fileList.ElementAt(i).FileName);
+                lvi.SubItems.Add("%"+fileList.ElementAt(i).UploadProgress);
+                lvi.SubItems.Add(fileList.ElementAt(i).FileStatus);
+
+                listView1.Items.Add(lvi);
+            }
+            listView1.EndUpdate();
         }
 
         //开始上传按钮事件
         private void button2_Click(object sender, EventArgs e)
         {
-            //this.progressBar1.Minimum = 0;
-            //this.progressBar1.Maximum = 100;
-            //this.progressBar1.BackColor = Color.Red;
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.BackColor = Color.Red;
 
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    this.progressBar1.Value++;
-            //    Application.DoEvents();
-            //}
-
-            
-
-            listView1.BeginUpdate();
-
-            
-
-            
-
-            for (int i = 0; i < 10;i++ )
+            for (int i = 0; i < 100; i++)
             {
-                listView1.Items.Add("row1"+i, i+"", i);
-                listView1.Items["row1" + i].SubItems.Add("200KB" + i);
-                listView1.Items["row1" + i].SubItems.Add("test.mp4" + i);
-                
-
-               
-
-                listView1.Items["row1" + i].SubItems.Add("4" + i);
-                listView1.Items["row1" + i].BackColor = Color.Green;
-
-                listView1.Items["row1" + i].SubItems.Add("等待上传" + i);
+                this.progressBar1.Value++;
+                Application.DoEvents();
             }
-
-            listView1.EndUpdate();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

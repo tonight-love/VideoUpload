@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Windows.Forms;
 namespace VideoUpload
 {
     partial class MainForm
@@ -34,6 +36,7 @@ namespace VideoUpload
             this.button2 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
+            this.fileList = new List<VideoFile>();
             // 
             // button1
             // 
@@ -93,6 +96,7 @@ namespace VideoUpload
         private System.Windows.Forms.ProgressBar progressBar1;
         private Button button2;
         private ListView listView1;
+        private List<VideoFile> fileList;
     }
 }
 
