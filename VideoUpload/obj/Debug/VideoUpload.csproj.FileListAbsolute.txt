@@ -6,3 +6,11 @@ E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.csproj.GenerateResou
 E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.exe
 E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.pdb
 E:\project\vs\VideoUpload\VideoUpload\obj\Debug\VideoUpload.MainForm.resources
+E:\desktop\VideoUpload\VideoUpload\obj\Debug\VideoUpload.MainForm.resources
+E:\desktop\VideoUpload\VideoUpload\obj\Debug\VideoUpload.Properties.Resources.resources
+E:\desktop\VideoUpload\VideoUpload\obj\Debug\VideoUpload.csproj.GenerateResource.Cache
+E:\desktop\VideoUpload\VideoUpload\bin\Debug\视频上传.exe.config
+E:\desktop\VideoUpload\VideoUpload\bin\Debug\视频上传.exe
+E:\desktop\VideoUpload\VideoUpload\bin\Debug\视频上传.pdb
+E:\desktop\VideoUpload\VideoUpload\obj\Debug\视频上传.exe
+E:\desktop\VideoUpload\VideoUpload\obj\Debug\视频上传.pdb

@@ -99,7 +99,9 @@ namespace VideoUpload
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            //this.FormClosed = new System.EventHandler(this.button2_Click);
         }
 
         #endregion
